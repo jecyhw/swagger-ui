@@ -31,6 +31,7 @@ export default class Topbar extends React.Component {
 
   onUrlSelect =(e)=> {
     let url = e.target.value || e.target.href
+    this.setState({url: url})
     this.loadSpec(url)
     this.setSelectedUrl(url)
     e.preventDefault()
@@ -119,11 +120,11 @@ export default class Topbar extends React.Component {
         </label>
       )
     }
-    else {
-      formOnSubmit = this.downloadUrl
-      control.push(<input className="download-url-input" type="text" onChange={ this.onUrlChange } value={this.state.url} disabled={isLoading} style={inputStyle} />)
-      control.push(<Button className="download-url-button" onClick={ this.downloadUrl }>Explore</Button>)
-    }
+
+    formOnSubmit = this.downloadUrl
+    control.push(<input className="download-url-input" type="text" onChange={ this.onUrlChange } value={this.state.url} disabled={isLoading} style={inputStyle} />)
+    control.push(<Button className="download-url-button" onClick={ this.downloadUrl }>Explore</Button>)
+
 
     return (
       <div className="topbar">
